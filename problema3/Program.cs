@@ -9,8 +9,19 @@ try
     var li = Convert.ToDecimal(Console.ReadLine());
     System.Console.WriteLine("El Consumo realizado fue de "+ km/li +" kilometros por litro");
 }
-catch (System.Exception)
+catch (System.FormatException e)
 {
-    System.Console.WriteLine("error");
-    throw;
+    System.Console.WriteLine("error: " + e.Message);
+}
+catch(System.OverflowException e)
+{
+    System.Console.WriteLine("error: " + e.Message);
+}   
+catch (System.DivideByZeroException e)
+{
+    System.Console.WriteLine("error"+ e.Message);
+}
+catch (Exception)
+{
+    Console.WriteLine("error: debe ingresar numeros positivos");
 }
