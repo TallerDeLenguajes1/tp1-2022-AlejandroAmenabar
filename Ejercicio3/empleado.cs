@@ -1,37 +1,49 @@
 
 class empleado
 {
-    private string Nombre;
-    private string Direccion;
-    private DateOnly fechaIngreso;
-    private DateTime fechaNacimiento;
-    private float sueldoBasico;
-    private int antiguedad;
-    private static float descuento = sueldoBasico - (0.15*sueldoBasico);
-    private static int adicional = (0.01*sueldoBasico)*antiguedad;
-    private enum EstadoCivilItem{Solero,Casado,Divorciado,Viudo};
-    private int hijos;
-    
-    private DateTime fechaDivorcio;
-    private bool estudioUniversidad;
-    private string titulo;
-    private string universidad;
+    public string? Nombre;
+    public string? Direccion;
+    public DateTime fechaNacimiento;
+    public enum EstadoCivilItem{Solero,Casado,Divorciado,Viudo};
+    public DateTime fechaDivorcio;
+    public DateTime fechaIngreso;
+    public double sueldoBasico;
+    public int Hijos;
+    public bool estudioUniversidad;
+    public string? titulo;
+    public string? universidad;
+
+    public empleado(string nom, DateTime fecNaci, DateTime fecIngr, double salario, int hijos){
+        Nombre = nom;
+        fechaNacimiento = fecNaci;
+        fechaIngreso = fecIngr;
+        sueldoBasico = salario;
+        Hijos = hijos;
+    }
     public int Antiguedad()
     {
-        var today = DateTime.today;
+        var today = DateTime.Today;
         var antiguedad = today.Year - fechaIngreso.Year;
         return antiguedad;
     }
 
     public int edad(){
-        var.today = DateTime.today;
-        age = today.Year - fechaNacimiento.Year;
+        var today = DateTime.Today;
+        int age = today.Year - fechaNacimiento.Year;
         return age;
     }
 
-    public float Salario(){
+    public double Descuento(){
+        return (sueldoBasico*0.15);
+    }
+    public double Adicional(){
+        if(Antiguedad()>20) return 0.25*sueldoBasico;//25% del sueldo basico
+        return 0.01*Antiguedad()*sueldoBasico;//1% del sueldo basico
+    }
+    public double Salario(){
         
-        var salario = sueldoBasico + adicional - descuento;
+        var salario = sueldoBasico + Adicional() - Descuento();
+        return salario;
     }
 
 }
