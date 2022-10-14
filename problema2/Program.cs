@@ -11,6 +11,10 @@ try
     System.Console.WriteLine("El dividendo es "+n1+" y el divisor: "+ n2);
     System.Console.WriteLine("El resultado es: "+ n1/n2);
 }
+catch (System.DivideByZeroException e)
+{
+    System.Console.WriteLine("error"+ e.Message);
+}
 catch (System.FormatException e)
 {
     System.Console.WriteLine("error: " + e.Message);
@@ -19,7 +23,3 @@ catch(System.OverflowException e)
 {
     System.Console.WriteLine("error: " + e.Message);
 }   
-catch (System.DivideByZeroException e)
-{
-    System.Console.WriteLine("error"+ e.Message);
-}
