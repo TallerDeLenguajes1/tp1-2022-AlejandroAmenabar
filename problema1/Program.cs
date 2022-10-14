@@ -17,4 +17,7 @@ catch(System.OverflowException e)
 {
     System.Console.WriteLine("error: " + e.Message);
 }   
-
+catch(System.Exception e)
+{
+    System.Console.WriteLine("error ingrese un numero valido");
+}
